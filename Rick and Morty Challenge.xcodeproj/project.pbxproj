@@ -19,6 +19,7 @@
 		15372D4927B33C75004A8493 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15372D4827B33C75004A8493 /* Coordinator.swift */; };
 		15372D4B27B33C82004A8493 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15372D4A27B33C82004A8493 /* AppCoordinator.swift */; };
 		15372D4D27B34A7C004A8493 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15372D4C27B34A7C004A8493 /* MainViewModel.swift */; };
+		15372D5127B35046004A8493 /* EpisodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15372D5027B35046004A8493 /* EpisodeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		15372D4827B33C75004A8493 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		15372D4A27B33C82004A8493 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		15372D4C27B34A7C004A8493 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		15372D5027B35046004A8493 /* EpisodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				15372D4527B2D57B004A8493 /* Episode.swift */,
+				15372D5027B35046004A8493 /* EpisodeManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				15372D4D27B34A7C004A8493 /* MainViewModel.swift in Sources */,
 				15372D4B27B33C82004A8493 /* AppCoordinator.swift in Sources */,
 				15372D1727B2CF49004A8493 /* MainViewController.swift in Sources */,
+				15372D5127B35046004A8493 /* EpisodeManager.swift in Sources */,
 				15372D4627B2D57C004A8493 /* Episode.swift in Sources */,
 				15372D4927B33C75004A8493 /* Coordinator.swift in Sources */,
 				15372D1327B2CF49004A8493 /* AppDelegate.swift in Sources */,

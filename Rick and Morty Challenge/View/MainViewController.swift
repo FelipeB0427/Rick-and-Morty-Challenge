@@ -11,7 +11,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: -  PROPERTIES
     private let viewModel: MainViewModel
     let tableView = UITableView()
-    
+    var episodes: Episodes?
+    var results: [Results]?
     
     init(viewModel: MainViewModel) {
         self.viewModel = viewModel
@@ -30,8 +31,21 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
+        let epManager = EpisodeManager()
+        for index in 1..<4 {
+            epManager.getAllEps(page: index) { episode in
+                DispatchQueue.main.async {
+                    if index == 1 {
+                        self.episodes = episode
+                    } else {
+                        self.episodes?.results.append(contentsOf: episode.results)
+                    }
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
-
+    
     
     // MARK: - HELPERS
     func configureTableView() {
@@ -41,14 +55,18 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.episodes?.results.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = "Cell \(indexPath.row + 1)"
+        cell.textLabel?.text = self.episodes?.results[indexPath.row].name
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        <#code#>
+//    }
 }
 
