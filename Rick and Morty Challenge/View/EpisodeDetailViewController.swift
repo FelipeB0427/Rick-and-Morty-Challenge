@@ -11,14 +11,14 @@ class EpisodeDetailViewController: UIViewController, UITableViewDelegate, UITabl
     private let viewModel: EpisodeDetailViewModel
     var character: Character?
     var characters: [Character] = []
-    var url: [String]
+    var episodeData: Results
     let tableView = UITableView()
     var nameLabel = UILabel()
     var statusLabel = UILabel()
     
-    init(viewModel: EpisodeDetailViewModel, characterUrl: [String]) {
+    init(viewModel: EpisodeDetailViewModel, episode: Results) {
         self.viewModel = viewModel
-        self.url = characterUrl
+        self.episodeData = episode
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,14 +35,13 @@ class EpisodeDetailViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         let charManager = CharacterManager()
-        for index in 0..<url.count {
-            charManager.getCharacter(url: url[index]) { character in
+        for index in 0..<episodeData.characters.count {
+            charManager.getCharacter(url: episodeData.characters[index]) { character in
                 self.characters.append(character)
                 
-                if index == self.url.count - 1 {
+                if index == self.episodeData.characters.count - 1 {
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
-                        
                     }
                 }
             }

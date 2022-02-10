@@ -22,9 +22,9 @@ class AppCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showEpisodeDetailScreen(charUrl: [String]) {
+    func showEpisodeDetailScreen(episodeData: Results) {
         let viewModel = EpisodeDetailViewModel(coordinator: self)
-        let vc = EpisodeDetailViewController(viewModel: viewModel, characterUrl: charUrl)
+        let vc = EpisodeDetailViewController(viewModel: viewModel, episode: episodeData)
         
         navigationController.pushViewController(vc, animated: true)
     }

@@ -63,7 +63,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.presentEpisodeDetailScreen(charUrl: (self.episodes[indexPath.row].characters))
+        viewModel.presentEpisodeDetailScreen(episode: self.episodes[indexPath.row])
     }
 }
 
