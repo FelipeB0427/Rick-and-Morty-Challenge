@@ -14,7 +14,7 @@ final class MainViewModel {
         self.coordinator = coordinator
     }
     
-    public func presentEpisodeDetailScreen(charUrl: [String]) {
-        coordinator.showEpisodeDetailScreen(charUrl: charUrl)
+    public func presentEpisodeDetailScreen(episode: Results) {
+        coordinator.showEpisodeDetailScreen(episodeData: episode)
     }
 }
