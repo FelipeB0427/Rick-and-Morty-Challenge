@@ -1,20 +1,24 @@
 //
-//  ViewController.swift
+//  EpisodeDetailViewController.swift
 //  Rick and Morty Challenge
 //
-//  Created by Felipe Brigagão de Almeida on 08/02/22.
+//  Created by Felipe Brigagão de Almeida on 09/02/22.
 //
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    // MARK: -  PROPERTIES
-    private let viewModel: MainViewModel
+class EpisodeDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    private let viewModel: EpisodeDetailViewModel
+    var character: Character?
+    var characters: [Character] = []
+    var url: [String]
     let tableView = UITableView()
-    var episodes: [Results] = []
+    var nameLabel = UILabel()
+    var statusLabel = UILabel()
     
-    init(viewModel: MainViewModel) {
+    init(viewModel: EpisodeDetailViewModel, characterUrl: [String]) {
         self.viewModel = viewModel
+        self.url = characterUrl
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -30,14 +34,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
-        let epManager = EpisodeManager()
-        for index in 1..<4 {
-            epManager.getAllEps(page: index) { episode in
-                self.episodes.append(contentsOf: episode.results)
+        let charManager = CharacterManager()
+        for index in 0..<url.count {
+            charManager.getCharacter(url: url[index]) { character in
+                self.characters.append(character)
                 
-                if index == 3 {
+                if index == self.url.count - 1 {
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
+                        
                     }
                 }
             }
@@ -48,22 +53,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func configureTableView() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
-        tableView.backgroundColor = .red
+        tableView.backgroundColor = .systemCyan
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return episodes.count
+        return characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        cell.textLabel?.text = self.episodes[indexPath.row].name
+         cell.textLabel?.text = self.characters[indexPath.row].name
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.presentEpisodeDetailScreen(charUrl: (self.episodes[indexPath.row].characters))
-    }
 }
-

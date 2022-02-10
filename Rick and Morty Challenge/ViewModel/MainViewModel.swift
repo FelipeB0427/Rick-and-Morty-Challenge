@@ -13,4 +13,8 @@ final class MainViewModel {
     init(coordinator: AppCoordinator) {
         self.coordinator = coordinator
     }
+    
+    public func presentEpisodeDetailScreen(charUrl: [String]) {
+        coordinator.showEpisodeDetailScreen(charUrl: charUrl)
+    }
 }
