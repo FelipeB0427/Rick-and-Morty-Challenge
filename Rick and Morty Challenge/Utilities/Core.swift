@@ -18,4 +18,8 @@ class Core {
     func setIsFirstLaunch() {
         standard.set(true, forKey: "isFirstLaunch")
     }
+    
+    func resetIsFirstLaunch() {
+        standard.set(false, forKey: "isFirstLaunch")
+    }
 }

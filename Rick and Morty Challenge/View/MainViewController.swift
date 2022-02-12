@@ -117,7 +117,6 @@ class MainViewController: UIViewController {
     }
 }
 
-
 // MARK: - EXTENSIONS
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
