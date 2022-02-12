@@ -25,7 +25,6 @@ class OnboardingViewController: UIViewController {
         view.layer.addSublayer(configureBackground)
         addSubViews()
         setConstraints()
-        
     }
     
     @objc func buttonTapped(sender: UIButton) {
@@ -37,7 +36,7 @@ class OnboardingViewController: UIViewController {
     lazy var configureBackground: CAGradientLayer = {
         let gradient = CAGradientLayer()
         
-        gradient.colors = [UIColor(named: "onboarding-background1")?.cgColor ?? UIColor.red, UIColor(named: "onboarding-background2")?.cgColor ?? UIColor.cyan]
+        gradient.colors = [UIColor(named: "main-background1")?.cgColor ?? UIColor.red, UIColor(named: "main-background2")?.cgColor ?? UIColor.cyan]
         gradient.startPoint = CGPoint(x: 0.4, y: 0.2)
         gradient.endPoint = CGPoint(x: 0.6, y: 0.7)
         gradient.frame = view.bounds
@@ -48,7 +47,7 @@ class OnboardingViewController: UIViewController {
     lazy var configureButton: UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = UIColor(named: "onboarding-button2")
+        button.backgroundColor = UIColor(named: "main-button")
         button.setTitleColor(.black, for: .normal)
         button.setTitle("Continue", for: .normal)
         button.layer.cornerRadius = 7
@@ -60,8 +59,6 @@ class OnboardingViewController: UIViewController {
     lazy var configureLogo: UIImageView = {
         let logo = UIImage(named: "logo")
         let logoView = UIImageView(image: logo)
-        
-        view.addSubview(logoView)
         
         return logoView
     }()

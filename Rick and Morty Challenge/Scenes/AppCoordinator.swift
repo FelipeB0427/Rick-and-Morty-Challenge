@@ -36,6 +36,13 @@ class AppCoordinator: Coordinator {
         
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showSettingsScreen() {
+        let viewModel = SettingsViewModel(coordinator: self)
+        let vc = SettingsViewController(viewModel: viewModel)
+        
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
 
 
