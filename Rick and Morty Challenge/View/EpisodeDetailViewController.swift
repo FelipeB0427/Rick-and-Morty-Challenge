@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EpisodeDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class EpisodeDetailViewController: UIViewController {
     private let viewModel: EpisodeDetailViewModel
     var character: Character?
     var characters: [Character] = []
@@ -34,6 +34,10 @@ class EpisodeDetailViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
+        loadApi()
+    }
+    
+    private func loadApi() {
         let charManager = CharacterManager()
         for index in 0..<episodeData.characters.count {
             charManager.getCharacter(url: episodeData.characters[index]) { character in
@@ -54,7 +58,9 @@ class EpisodeDetailViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.frame = view.bounds
         tableView.backgroundColor = .systemCyan
     }
-    
+}
+
+extension EpisodeDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters.count
     }

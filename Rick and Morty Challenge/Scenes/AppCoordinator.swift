@@ -17,9 +17,17 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let viewModel = MainViewModel(coordinator: self)
-        let vc = MainViewController(viewModel: viewModel)
-        navigationController.pushViewController(vc, animated: true)
+        if !Core.shared.isFirstLauch() {
+            let viewModel = MainViewModel(coordinator: self)
+            let vc = MainViewController(viewModel: viewModel)
+            
+            navigationController.pushViewController(vc, animated: true)
+        } else {
+            let viewModel = OnboardingViewModel(coordinator: self)
+            let vc = OnboardingViewController(viewModel: viewModel)
+            
+            navigationController.pushViewController(vc, animated: true)
+        }
     }
     
     func showEpisodeDetailScreen(episodeData: Results) {
