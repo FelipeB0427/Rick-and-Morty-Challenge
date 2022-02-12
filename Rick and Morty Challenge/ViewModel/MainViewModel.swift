@@ -17,4 +17,8 @@ final class MainViewModel {
     public func presentEpisodeDetailScreen(episode: Results) {
         coordinator.showEpisodeDetailScreen(episodeData: episode)
     }
+    
+    public func presentSettingsScreen() {
+        coordinator.showSettingsScreen()
+    }
 }
