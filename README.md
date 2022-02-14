@@ -8,7 +8,7 @@ A Branch mais atualizada é a main.
 - Modo claro/escuro
 - UIKit
 - MVVM-C
-- User Defaukts
+- User Defaults
 - DocC
 - View Code
 
