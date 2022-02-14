@@ -1,13 +1,13 @@
 //
-//  MainViewModel.swift
+//  EpisodeDetailViewModel.swift
 //  Rick and Morty Challenge
 //
-//  Created by Felipe Brigagão de Almeida on 08/02/22.
+//  Created by Felipe Brigagão de Almeida on 09/02/22.
 //
 
 import Foundation
 
-final class MainViewModel {
+final class EpisodeDetailViewModel {
     private let coordinator: AppCoordinator
     
     init(coordinator: AppCoordinator) {
