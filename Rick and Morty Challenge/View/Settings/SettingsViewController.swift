@@ -55,10 +55,10 @@ class SettingsViewController: UIViewController {
     }
         
     func showAlert() {
-        let alert = UIAlertController(title: "Success", message: "Close and Open the App again to see the Onboarding", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Success", message: "Close and Open the App to see the Onboarding", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { action in
-            print("Tapped.")
+            
         }))
         
         present(alert, animated: true)
@@ -91,7 +91,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         switchView.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
         content.text = "Reset"
         content.textProperties.color = .black
-        cell.backgroundColor = UIColor(named: "tableView-background")
+        cell.backgroundColor = UIColor(named: "tableView-background1")
         cell.selectionStyle = .none
         cell.accessoryView = switchView
         cell.contentConfiguration = content

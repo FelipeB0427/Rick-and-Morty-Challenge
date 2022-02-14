@@ -8,6 +8,7 @@
 import UIKit
 
 class OnboardingViewController: UIViewController {
+    // MARK: - PROPERTIES
     private let viewModel: OnboardingViewModel
     
     init(viewModel: OnboardingViewModel) {
@@ -19,10 +20,10 @@ class OnboardingViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.layer.addSublayer(configureBackground)
+        view.backgroundColor = UIColor(named: "main-background2")
         addSubViews()
         setConstraints()
     }
@@ -33,22 +34,11 @@ class OnboardingViewController: UIViewController {
     }
     
     // MARK: - CONFIGS
-    lazy var configureBackground: CAGradientLayer = {
-        let gradient = CAGradientLayer()
-        
-        gradient.colors = [UIColor(named: "main-background1")?.cgColor ?? UIColor.red, UIColor(named: "main-background2")?.cgColor ?? UIColor.cyan]
-        gradient.startPoint = CGPoint(x: 0.4, y: 0.2)
-        gradient.endPoint = CGPoint(x: 0.6, y: 0.7)
-        gradient.frame = view.bounds
-                
-        return gradient
-    }()
-    
     lazy var configureButton: UIButton = {
         let button = UIButton()
         
         button.backgroundColor = UIColor(named: "main-button")
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.label, for: .normal)
         button.setTitle("Continue", for: .normal)
         button.layer.cornerRadius = 7
         button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
