@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+/// Used to control the states of the {isFirstLaunch} with a singleton.
 class Core {
     static let shared = Core()
     let standard = UserDefaults.standard

@@ -42,8 +42,8 @@ class MainViewController: UIViewController {
         settingsButton.layer.shadowOpacity = 0.4
         settingsButton.layer.shadowOffset = CGSize(width: 1, height: 2)
         
-        settingsButton.configuration?.baseBackgroundColor = UIColor(named: "main-background2")
-        settingsButton.configuration?.image = UIImage(systemName: "gear")
+        settingsButton.configuration?.baseBackgroundColor = UIColor(named: "items-background1")
+        settingsButton.configuration?.image = UIImage(systemName: "gear")?.withTintColor(.label, renderingMode: .alwaysOriginal)
         settingsButton.configuration?.cornerStyle = .capsule
         settingsButton.addTarget(self, action:  #selector(self.buttonTapped), for: .touchUpInside)
         
@@ -62,7 +62,7 @@ class MainViewController: UIViewController {
     func setConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 350).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -35).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         
@@ -105,6 +105,8 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "main-background1")
         title = "All Episodes"
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
         
         addSubViews()
         configureTableView()
@@ -129,9 +131,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         
         content.text = self.episodes[indexPath.row].name
         content.secondaryText = self.episodes[indexPath.row].episodeCode
-        content.textProperties.color = .black
-        content.secondaryTextProperties.color = .black
-        cell.backgroundColor = UIColor(named: "tableView-background")
+        content.textProperties.color = .label
+        content.secondaryTextProperties.color = .label
+        cell.backgroundColor = UIColor(named: "items-background1")
         cell.selectionStyle = .none
         cell.contentConfiguration = content
         
